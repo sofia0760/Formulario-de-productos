@@ -1,0 +1,122 @@
+/* ====== ESTILOS GENERALES ====== */
+body {
+  background: #353536;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
+  margin-top: 30px;
+}
+
+/* ====== FORMULARIO ====== */
+#form {
+  background: #e50000;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#form h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #007bff;
+}
+
+#form .form-label {
+  font-weight: 600;
+  color: #555;
+}
+
+#form .form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+#form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Botón agregar */
+#form #agregar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#form #agregar:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== TARJETAS ====== */
+#cont-cards {
+  padding: 20px;
+}
+
+#cont-cards h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #28a745;
+}
+
+.item-vehiculo .card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item-vehiculo .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.item-vehiculo img {
+  max-height: 180px;
+  object-fit: cover;
+}
+
+.card-body h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-body h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.card-body h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Botones en la tarjeta */
+.card-body button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.card-body button:hover {
+  transform: scale(1.05);
+}
