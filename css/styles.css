@@ -1,122 +1,141 @@
-/* ====== ESTILOS GENERALES ====== */
-body {
-  background: #353536;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+body{
+    background: #f5f5f5;
+    overflow-x: hidden;
 }
 
-h2 {
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #222;
+#form{
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 50px;
+    background: white;
 }
 
-/* ====== CONTENEDOR PRINCIPAL ====== */
-.container {
-  margin-top: 30px;
+#form input:focus{
+    border: 1px solid #00c897;
+     box-shadow: 0 0 10px #00c897;
 }
 
-/* ====== FORMULARIO ====== */
-#form {
-  background: #e50000;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+#form label{
+    color: black;
+    font-weight: 600;
 }
 
-#form h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  color: #007bff;
+#form button{
+    background: #1abc9c;
+    border: transparent;
+    margin-top: 10px;
+    transition: 0.5s;
 }
 
-#form .form-label {
-  font-weight: 600;
-  color: #555;
+#form button:hover{
+    transform: scale(1.1);
 }
 
-#form .form-control {
-  border-radius: 8px;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
+.item-vehiculo .card{
+    transition: 0.5s;
 }
 
-#form .form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+.item-vehiculo .card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Botón agregar */
-#form #agregar {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  border: none;
-  color: white;
-  transition: all 0.3s ease;
+.item-vehiculo .card img{
+    border-bottom: 4px solid #1abc9c;
+    height: 250px;
 }
 
-#form #agregar:hover {
-  background: linear-gradient(135deg, #0056b3, #003f7f);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+.item-vehiculo .card-body h2,h3,h4{
+    font-size: 18px;
+    color: black;
 }
 
-/* ====== TARJETAS ====== */
-#cont-cards {
-  padding: 20px;
+.item-vehiculo .card-body h2.text-success{
+    color: #1abc9c !important;
+    font-size: 30px;
+    text-align: center;
 }
 
-#cont-cards h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #28a745;
+.item-vehiculo .card-body button.btn-success{
+    background: #1abc9c;
+    border: none;
 }
 
-.item-vehiculo .card {
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+.row.principal{
+    margin-top: 50px;
 }
 
-.item-vehiculo .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+#carrito{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    border: none;
+    background: transparent;
 }
 
-.item-vehiculo img {
-  max-height: 180px;
-  object-fit: cover;
+#carrito i{
+  font-size: 40px;
+  color: #1abc9c;
 }
 
-.card-body h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
+.panel{
+    
+    width: 400px;
+    padding: 20px 20px 20px 24px;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 0 10px #bdbdbd;
+    background: white;
+    position: absolute;
+    top: 0px;
+    right: -800px;
+    transition: right 0.5s;
 }
 
-.card-body h4 {
-  font-size: 1rem;
-  margin-bottom: 5px;
+.panel.activo{
+    right: 10px;
 }
 
-.card-body h2 {
-  font-size: 1.3rem;
-  font-weight: bold;
+.panel h2.titulo{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Botones en la tarjeta */
-.card-body button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
+.panel .tarjeta-panel img{
+    width: 100%;
+    margin-top: 5px;
 }
 
-.card-body button:hover {
-  transform: scale(1.05);
+.panel .tarjeta-panel h2{
+    font-size: 14px;
+}
+
+.panel .tarjeta-panel{
+    box-shadow: 0 0 10px #bdbdbd;
+    border-radius: 10px;
+    width: 350px;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.panel .tarjeta-panel .info{
+    margin-top: 1px;
+    padding: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.panel .tarjeta-panel button{
+    font-size: 10px;
+    margin-left: 70px;
+    margin-top: -10px;
+}
+
+.panel button#ocultar{
+    width: 40px;
 }
