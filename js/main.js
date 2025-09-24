@@ -68,6 +68,7 @@ function crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo) 
 
 
 
+    //se llama un alert
     
 
 
