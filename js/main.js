@@ -68,7 +68,7 @@ function crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo) 
 
 
 
-    // MUESTRA UN MENSAJE AL DAR CLICK EN EL BOTON COMPRAR
+    
 
 
 
