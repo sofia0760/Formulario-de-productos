@@ -1,4 +1,4 @@
-// CREAMOS LAS CONSTATNTES GLOBALES
+// CREAMOS LAS CONSTANTES GLOBALES
 const iFoto = document.getElementById('foto');
 const iNombres = document.getElementById('nombres');
 const iMarca = document.getElementById('marca');
@@ -10,35 +10,28 @@ const card = document.getElementById('cont-cardss');
 const iPanel = document.getElementById('panel');
 let totalPrecio = 0;
 
-//CREAMOS LA FUNCION QUE NOS PERMITE CREAR UNA NUEVA TAREA A PARTIR DEL FORMULARIO
-//TODA ETIQUETA QUE VAMOS A CREAR ES APARTIR DE LA MAQUETA HTML PRE-EXISTENTE
-
-// ESTA FUNCION SOLO CREA LA ESTRUCTURA DEL HTML Y AUN NO LA INSERTA EN LA PAGINA, LA DEJA EN EL LIMBO
+// FUNCIÓN PARA CREAR VEHÍCULO
 function crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo) {
-    //CREAMOS EL NODO, ELEMENTO PADRE O CONTENEDOR
     const pPrincipal = document.createElement('div');
     pPrincipal.classList.add('item-vehiculo', 'col-md-6');
 
-    //CREAMOS EL NODO SERIA UN PADRE SECUNDARIO
     const pCard = document.createElement('div');
     pCard.classList.add('card', 'h-100');
 
-    // CREAMOS LOS NODOS HIJOS
     const imagen = document.createElement('img');
     imagen.classList.add('card-img-top', 'w-100');
     imagen.setAttribute('src', imagenV);
-    imagen.setAttribute('alt', 'Foto vehiculo')
+    imagen.setAttribute('alt', 'Foto vehiculo');
 
-    // CREO UN TERCER CONTENEDOR PADRE
     const pTercero = document.createElement('div');
     pTercero.classList.add('card-body');
 
     const titulo = document.createElement('h3');
     titulo.classList.add('card-title');
-    titulo.textContent = titulo1
+    titulo.textContent = titulo1;
 
     const marca = document.createElement('h4');
-    marca.classList.add('card-text')
+    marca.classList.add('card-text');
     marca.textContent = sMarca;
 
     const modelo = document.createElement('h4');
@@ -50,14 +43,12 @@ function crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo) 
     kilometraje.textContent = 'Kilometraje: ' + kVehiculo;
 
     const precio = document.createElement('h2');
-    precio.classList.add('text-success')
+    precio.classList.add('text-success');
     precio.textContent = '$' + pVehiculo;
 
-    // CREO EL CUARTO CONTENEDOR PADRE
     const pCuarto = document.createElement('div');
     pCuarto.classList.add('d-flex', 'justify-content-between', 'mt-3');
 
-    // CREO LOS HIJOS DEL CUARTO CONTENEDOR PADRE
     const comprar = document.createElement('button');
     comprar.classList.add('btn', 'btn-success');
     comprar.textContent = 'Agregar';
@@ -66,36 +57,23 @@ function crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo) 
     eliminar.classList.add('btn', 'btn-danger');
     eliminar.textContent = 'Eliminar';
 
-
-
-    //se llama un alert
-    
-
-
-
-    //ENSAMBLAMOS DENTRO DE LOS NODOS PADRES SUS NODOS HIJOS
+    // ENSAMBLAR
     pPrincipal.appendChild(pCard);
-
     pCard.appendChild(imagen);
     pCard.appendChild(pTercero);
-
     pTercero.appendChild(titulo);
     pTercero.appendChild(marca);
     pTercero.appendChild(modelo);
     pTercero.appendChild(kilometraje);
     pTercero.appendChild(precio);
     pTercero.appendChild(pCuarto);
-
     pCuarto.appendChild(comprar);
     pCuarto.appendChild(eliminar);
 
-    // UTILIZAMOS EL RETURN PARA RETORNAR O DAR RESPUESTA DEL ELEMENTO CREADO YA QUE LO USAREMOS EN OTRA FUNCION MAS ADELANTE
     return pPrincipal;
+}
 
-};
-
-// DETECTAMOS EL EVENTO CLICK SOBRE EL BOTON AGREGAR CON UN EVENTO DE ESCUCHA O LISTENER
-// PARA QUE A PARTIR DE ESTE EVENTO SE AGREGUE LA TAREA DENTRO DEL CONTENEDOR
+// EVENTO DEL FORMULARIO
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let imagenV = iFoto.value.trim();
@@ -110,87 +88,76 @@ form.addEventListener('submit', (e) => {
     }
 
     if (titulo1 == '' || sMarca == '' || modeloV == '' || kVehiculo == '' || pVehiculo == '') {
-        alert('Registre todos los campos')
+        alert('Registre todos los campos');
     } else {
-
         const newVehiculo = crearVehiculo(imagenV, titulo1, sMarca, modeloV, kVehiculo, pVehiculo);
         eventsVehicles(newVehiculo);
         card.appendChild(newVehiculo);
-        iFoto.value = '';
-        iNombres.value = '';
-        iMarca.value = '';
-        iModelo.value = '';
-        iKilometraje.value = '';
-        iPrecio.value = '';
+        form.reset();
     }
-
 });
 
 function eventsVehicles(pPrincipal) {
-
     const btnEliminar = pPrincipal.querySelector('.btn-danger');
     const btnAgregar = pPrincipal.querySelector('.btn-success');
     const contenedorCarrito = document.getElementById('contenedor-carrito');
 
-
-    // ELIMINAOS LA TARJETA
+    // ELIMINAR LA TARJETA
     btnEliminar.addEventListener('click', () => {
         pPrincipal.remove();
     });
 
+    // AGREGAR AL CARRITO
     btnAgregar.addEventListener('click', () => {
-
-
         const imagenPanel = pPrincipal.querySelector('img').getAttribute('src');
         const marcaPanel = pPrincipal.querySelector('.card-title').textContent;
-        const modeloPanel = pPrincipal.querySelector('.card-text').textContent;
+        const modeloPanel = pPrincipal.querySelectorAll('.card-text')[1].textContent;
         const precioPanel = pPrincipal.querySelector('.text-success').textContent;
 
         const precio = parseFloat(precioPanel.replace(/[$,]/g, ''));
 
-        const newPanel = agregarPanel(imagenPanel, marcaPanel, modeloPanel, precioPanel);
-        contenedorCarrito.appendChild(newPanel);
+        // en el ejercicio anterior era solo un valor. ahora estamos creando un objeto con varias caracteristicas con sus diferentes claves y valores
+        const nuevoCarrito = {
+            id: Date.now(),
+            imagen: imagenPanel,
+            marca: marcaPanel,
+            modelo: modeloPanel,
+            precio: precioPanel
+        };
 
+        // Obtener el array de carritos guardados
+        const carritosGuardados = JSON.parse(localStorage.getItem('carrito')) || [];
+        carritosGuardados.push(nuevoCarrito);
+        localStorage.setItem('carrito', JSON.stringify(carritosGuardados));
+
+        const newPanel = agregarPanel(imagenPanel, marcaPanel, modeloPanel, precioPanel, nuevoCarrito.id);
+        contenedorCarrito.appendChild(newPanel);
 
         totalPrecio += precio;
         mostrarTotal();
 
-         alert(marcaPanel + ' agregado al carrito exitosamente');
-
+        alert(marcaPanel + ' agregado al carrito exitosamente');
     });
-
-
-
-
-
-
-
-
-
 }
 
 const carrito = document.getElementById('carrito');
-const ocultar = document.getElementById('ocultar')
+const ocultar = document.getElementById('ocultar');
 const panel = document.querySelector('.panel');
 
 carrito.addEventListener('click', () => {
-    panel.classList.toggle('activo')
+    panel.classList.toggle('activo');
 });
 
 ocultar.addEventListener('click', () => {
-    panel.classList.toggle('activo')
+    panel.classList.toggle('activo');
 });
 
-
-
-
 // AGREGAR VEHICULOS AL PANEL
-function agregarPanel(imagenV, sMarca, modeloV, pVehiculo) {
-    // CREO EL NODO PRINCIPAL
+function agregarPanel(imagenV, sMarca, modeloV, pVehiculo, id) {
     const pTarjeta = document.createElement('div');
-    pTarjeta.classList.add('row', 'tarjeta-panel')
+    pTarjeta.classList.add('row', 'tarjeta-panel');
+    pTarjeta.setAttribute('data-id', id);
 
-    // CREO LOS HIJOS
     const pImagen = document.createElement('div');
     pImagen.classList.add('col-md-4');
 
@@ -218,20 +185,25 @@ function agregarPanel(imagenV, sMarca, modeloV, pVehiculo) {
     const pSexto = document.createElement('div');
     pSexto.classList.add('col-md-6');
 
-    const bElimnar = document.createElement('button');
-    bElimnar.classList.add('btn', 'btn-danger', 'dangers');
-    bElimnar.textContent = 'X';
+    const bEliminar = document.createElement('button');
+    bEliminar.classList.add('btn', 'btn-danger', 'dangers');
+    bEliminar.textContent = 'X';
 
-    bElimnar.addEventListener('click', () => {
+    bEliminar.addEventListener('click', () => {
         const precioTexto = cPrecio.textContent;
         const precioNumero = parseFloat(precioTexto.replace(/[$,]/g, ''));
+
+        // Eliminar del localStorage
+        const carritosGuardados = JSON.parse(localStorage.getItem('carrito')) || [];
+        const carritoActualizado = carritosGuardados.filter(v => v.id !== id);
+        localStorage.setItem('carrito', JSON.stringify(carritoActualizado));
 
         pTarjeta.remove();
         totalPrecio -= precioNumero;
         mostrarTotal();
-    })
+    });
 
-    // ENMSAMBLAMOS DENTRO DE LOS NODOS PADRES SUS NODOJS HIJOS
+    // ENSAMBLAR
     pTarjeta.appendChild(pImagen);
     pImagen.appendChild(imagenP);
     pTarjeta.appendChild(pInfo);
@@ -241,17 +213,32 @@ function agregarPanel(imagenV, sMarca, modeloV, pVehiculo) {
     pCuarto.appendChild(pQuinto);
     pQuinto.appendChild(cPrecio);
     pCuarto.appendChild(pSexto);
-    pSexto.appendChild(bElimnar);
+    pSexto.appendChild(bEliminar);
 
     return pTarjeta;
-
-
-};
+}
 
 function mostrarTotal() {
     const totalC = document.getElementById('total');
     totalC.textContent = 'Precio total: $' + totalPrecio;
-
-   
-
 }
+
+// Cargar al iniciar la página
+document.addEventListener("DOMContentLoaded", () => {
+    const carritosGuardados = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedorCarrito = document.getElementById('contenedor-carrito');
+
+    if (carritosGuardados) {
+        totalPrecio = 0;
+
+        carritosGuardados.forEach((vehiculo) => {
+            const newPanel = agregarPanel(vehiculo.imagen, vehiculo.marca, vehiculo.modelo, vehiculo.precio, vehiculo.id);
+            contenedorCarrito.appendChild(newPanel);
+
+            const precio = parseFloat(vehiculo.precio.replace(/[$,]/g, ''));
+            totalPrecio += precio;
+        });
+
+        mostrarTotal();
+    }
+});
