@@ -1,7 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 body{
-    background: #c6c5c5;
+    background: #fcaed9 ;
     overflow-x: hidden;
 }
 
@@ -9,7 +9,7 @@ body{
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 50px;
-    background: white;
+    background: rgb(250, 247, 247);
 }
 
 #form input:focus{
