@@ -1,141 +1,176 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
-body{
-    background: #fcaed9 ;
-    overflow-x: hidden;
+body {
+  background: linear-gradient(135deg, #f8c8dc, #fef1f7);
+  overflow-x: hidden;
 }
 
-#form{
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 50px;
-    background: rgb(250, 247, 247);
+/* ====== Formulario ====== */
+#form {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 50px;
+  background: #ffffff;
 }
 
-#form input:focus{
-    border: 1px solid #00c897;
-     box-shadow: 0 0 10px #00c897;
+#form input:focus {
+  border: 1px solid #d63384;
+  box-shadow: 0 0 10px #f48fb1;
 }
 
-#form label{
-    color: black;
-    font-weight: 600;
+#form label {
+  color: #4a2c35;
+  font-weight: 600;
 }
 
-#form button{
-    background: #1abc9c;
-    border: transparent;
-    margin-top: 10px;
-    transition: 0.5s;
+#form button {
+  background: #d63384;
+  border: transparent;
+  margin-top: 10px;
+  transition: 0.4s;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
-#form button:hover{
-    transform: scale(1.1);
+#form button:hover {
+  background: #f06292;
+  transform: scale(1.1);
 }
 
-.item-vehiculo .card{
-    transition: 0.5s;
+/* ====== Cards Vehículos ====== */
+.item-vehiculo .card {
+  transition: 0.4s;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.item-vehiculo .card:hover{
-    transform: translateY(-8px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.item-vehiculo .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.item-vehiculo .card img{
-    border-bottom: 4px solid #1abc9c;
-    height: 250px;
+.item-vehiculo .card img {
+  border-bottom: 4px solid #f48fb1;
+  height: 200px;
+  object-fit: cover;
 }
 
-.item-vehiculo .card-body h2,h3,h4{
-    font-size: 18px;
-    color: black;
+.item-vehiculo .card-body h2,
+.item-vehiculo .card-body h3,
+.item-vehiculo .card-body h4 {
+  font-size: 18px;
+  color: #4a2c35;
 }
 
-.item-vehiculo .card-body h2.text-success{
-    color: #1abc9c !important;
-    font-size: 30px;
-    text-align: center;
+.item-vehiculo .card-body h2.text-success {
+  color: #d63384 !important;
+  font-size: 28px;
+  text-align: center;
 }
 
-.item-vehiculo .card-body button.btn-success{
-    background: #1abc9c;
-    border: none;
+.item-vehiculo .card-body button.btn-success {
+  background: #d63384;
+  border: none;
+  color: #fff;
 }
 
-.row.principal{
-    margin-top: 50px;
+.row.principal {
+  margin-top: 50px;
 }
 
-#carrito{
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 10px;
-    right: 50px;
-    border: none;
-    background: transparent;
+/* ====== Carrito ====== */
+#carrito {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  border: none;
+  background: transparent;
 }
 
-#carrito i{
+#carrito i {
   font-size: 40px;
-  color: #1abc9c;
+  color: #d63384;
 }
 
-.panel{
-    
-    width: 400px;
-    padding: 20px 20px 20px 24px;
-    border-radius: 0 0 0 10px;
-    box-shadow: 0 0 10px #bdbdbd;
-    background: white;
-    position: absolute;
-    top: 0px;
-    right: -800px;
-    transition: right 0.5s;
+/* ====== Panel ====== */
+.panel {
+  width: 400px;
+  padding: 20px;
+  border-radius: 0 0 0 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  position: absolute;
+  top: 0px;
+  right: -800px;
+  transition: right 0.5s;
 }
 
-.panel.activo{
-    right: 10px;
+.panel.activo {
+  right: 10px;
 }
 
-.panel h2.titulo{
-    text-align: center;
-    margin-bottom: 20px;
+.panel h2.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #c2185b;
 }
 
-.panel .tarjeta-panel img{
-    width: 100%;
-    margin-top: 5px;
+.panel .tarjeta-panel {
+  box-shadow: 0 0 10px #e1b5c8;
+  border-radius: 12px;
+  width: 350px;
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.panel .tarjeta-panel img {
+    width: 100px;        /* ancho fijo */
+    height: 70px;        /* alto fijo */
+    object-fit: cover;   /* recorta y centra sin deformar */
+    border-radius: 8px;  /* esquinas suaves */
+    margin: 5px;
 }
 
-.panel .tarjeta-panel h2{
-    font-size: 14px;
+
+.panel .tarjeta-panel .info {
+  flex: 1;
+  padding: 10px;
 }
 
-.panel .tarjeta-panel{
-    box-shadow: 0 0 10px #bdbdbd;
-    border-radius: 10px;
-    width: 350px;
-    height: 100px;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;
+.panel .tarjeta-panel h2 {
+  font-size: 14px;
+  color: #4a2c35;
 }
 
-.panel .tarjeta-panel .info{
-    margin-top: 1px;
-    padding: 0;
-    padding-left: 10px;
-    padding-top: 10px;
+.panel .tarjeta-panel button {
+  font-size: 10px;
+  margin-left: 70px;
+  margin-top: -10px;
+  background: #d63384;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
 }
 
-.panel .tarjeta-panel button{
-    font-size: 10px;
-    margin-left: 70px;
-    margin-top: -10px;
+.panel button#ocultar {
+  width: 40px;
+  background: #f06292;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
 }
 
-.panel button#ocultar{
-    width: 40px;
+
+.item-vehiculo .card img {
+  border-bottom: 4px solid #f48fb1;
+  height: 180px;         /* antes 250px */
+  width: 100%;           /* que no se salga */
+  object-fit: cover;     /* recorta y centra sin deformar */
+  border-radius: 10px 10px 0 0;
 }
